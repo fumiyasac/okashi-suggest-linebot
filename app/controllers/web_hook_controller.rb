@@ -76,7 +76,7 @@ class WebHookController < ApplicationController
     def is_validate_signature
       signature = request.headers["X-LINE-ChannelSignature"]
       http_request_body = request.raw_post
-      hash = OpenSSL::HMAC::digest(OpenSSL::Digest::SHA256.new, CHANNEL_SECRET, http_request_body)
+      hash = OpenSSL::HMAC::digest(OpenSSL::Digest::SHA256.new, ENV['LINE_CHANNEL_SECRET'], http_request_body)
       signature_answer = Base64.strict_encode64(hash)
       signature == signature_answer
     end
