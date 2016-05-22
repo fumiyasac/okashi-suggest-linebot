@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   # LINE BOTのアクション用のメソッド
   post '/callback' => 'web_hook#index'
-  get  '/test' => 'web_hook#test'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

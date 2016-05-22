@@ -5,7 +5,7 @@ require 'yahoo_parse_api'
 module AnalizeApi
 
   # 形態素解析を利用して食べたいお菓子をレコメンドするメソッド
-  def analize_textdata(target_text)
+  def analize_text(target_text)
 
     # 使用しているAPIはこちら
     # 参考1：Yahoo形態素解析API
@@ -13,7 +13,7 @@ module AnalizeApi
     # 参考2：お菓子の虜WebAPI
     # http://www.sysbird.jp/toriko/webapi/
 
-    YahooParseApi::Config.app_id = "dj0zaiZpPU1UOHA3bFhYbVpqSSZzPWNvbnN1bWVyc2VjcmV0Jng9MTc-"
+    YahooParseApi::Config.app_id = ENV['YAHOO_API_KEY']
     parse_api = YahooParseApi::Parse.new
 
     # 引数で渡された文言を形態素解析する
@@ -25,11 +25,11 @@ module AnalizeApi
     result_from_api = response_from_api["ResultSet"]["ma_result"]["word_list"]["word"]
 
     # 名詞の配列リストを作成する
-    result = []
-    result_from_api.each do |res|
-      result << res["surface"] if res["pos"] == "名詞"
+    results = []
+    result_from_api.each do |result|
+      results << result["surface"] if result["pos"] == "名詞"
     end
-    raise "#{result}"
+    results
   end
 
 end

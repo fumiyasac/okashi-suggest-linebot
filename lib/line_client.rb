@@ -11,6 +11,8 @@ class LineClient
 
   # LINEBOT用の定数値
   # ※詳細は後で調べておく...
+  # 参考：LINEの公式APIドキュメント
+  # https://developers.line.me/bot-api/getting-started-with-bot-api-trial#signature_validation
   END_POINT  = "https://trialbot-api.line.me"
   TO_CHANNEL = 1383378250
   EVENT_TYPE = "138311608800106203"
@@ -26,7 +28,7 @@ class LineClient
     CONTACT  = 10
   end
 
-  # ユーザータイプん定数
+  # ユーザータイプ定数
   module ToType
     USER = 1
   end
