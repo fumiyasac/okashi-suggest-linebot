@@ -4,6 +4,7 @@
 
 require 'rexml/document'
 require 'open-uri'
+require 'line_client'
 
 class WebHookController < ApplicationController
 
