@@ -10,7 +10,7 @@ gem 'faraday_middleware'
 gem 'yahoo_parse_api'
 
 # Use sqlite3 as the database for Active Record
-gem 'sqlite3'
+gem 'sqlite3', group: [:development, :test]
 # Use SCSS for stylesheets
 #gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
@@ -45,7 +45,6 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 # production (herokuデプロイ用に必要)
-group :production do
-  gem 'pg', '0.15.1'
-  gem 'rails_12factor', '0.0.2'
+gem 'pg', '0.15.1', group: :production
+gem 'rails_12factor', '0.0.2' , group: :production
 end
