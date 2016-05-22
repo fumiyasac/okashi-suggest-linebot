@@ -22,5 +22,7 @@ module OkashiSuggestLinebot
 
     #アセットのプリコンパイルに関する設定
     config.assets.initialize_on_precompile = false
+    #libraryを読み込む
+    config.autoload_paths += Dir["#{config.root}/lib/**/*"]
   end
 end
