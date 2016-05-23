@@ -56,7 +56,8 @@ class WebHookController < ApplicationController
     client = LineClient.new(
       ENV['LINE_CHANNEL_ID'],
       ENV['LINE_CHANNEL_SECRET'],
-      ENV['LINE_CHANNEL_MID']
+      ENV['LINE_CHANNEL_MID'],
+      ENV['LINE_OUTBOUND_PROXY']
     )
     res = client.send([from_mid], result_message)
 
