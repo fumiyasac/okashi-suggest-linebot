@@ -24,5 +24,18 @@ module OkashiSuggestLinebot
     config.assets.initialize_on_precompile = false
     #libraryを読み込む
     config.autoload_paths += Dir["#{config.root}/lib/**/*"]
+    #rspecの有効化
+    config.generators do |g|
+      g.test_framework :rspec,
+        fixtures: true,
+        view_specs: false,
+        helper_specs: false,
+        routing_specs: false,
+        controller_specs: true,
+        request_specs: false
+      g.fixture_replacement :factory_girl, dir: "spec/factories"
+    end
+    # settings.ymlの読み込み
+    # ENV.update YAML.load_file('config/settings.yml')[Rails.env] rescue {}
   end
 end

@@ -4,10 +4,18 @@ source 'https://rubygems.org'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.7'
 
+# HTTPクライアント用
 gem 'faraday'
 gem 'faraday_middleware'
 
+# Yahoo!形態素解析API用
 gem 'yahoo_parse_api'
+
+# ユニットテスト用
+group :development, :test do
+  gem "rspec-rails", "~> 3.1.0"
+  gem "factory_girl_rails", "~> 4.4.1"
+end
 
 # Use sqlite3 as the database for Active Record
 gem 'sqlite3', group: [:development, :test]

@@ -1,11 +1,9 @@
-# LINEBOT及びネイティブアプリ用のコントローラー
-# 参考:
-# http://qiita.com/Arahabica/items/98e3d0d5b65269386dc4
-
 require 'rexml/document'
 require 'open-uri'
 require 'line_client'
 
+# LINEBOT及びネイティブアプリ用のコントローラー
+# 参考: http://qiita.com/Arahabica/items/98e3d0d5b65269386dc4
 class WebHookController < ApplicationController
 
   # CSRF対策無効化

@@ -1,10 +1,9 @@
-# 形態素解析を利用してお菓子をレコメンドするモジュール
-
 require 'yahoo_parse_api'
 
+# 形態素解析を利用してお菓子をレコメンドするモジュール
 module AnalizeApi
 
-  # 形態素解析を利用して食べたいお菓子をレコメンドするメソッド
+  # 形態素解析を利用して食べたいお菓子に関する単語を取得する
   def analize_text(target_text)
 
     # 使用しているAPIはこちら
@@ -22,7 +21,12 @@ module AnalizeApi
       ma_filter: '9|10',
       uniq_filter: '9|10'
     })
-    result_from_api = response_from_api["ResultSet"]["ma_result"]["word_list"]["word"]
+    response_result = response_from_api["ResultSet"]["ma_result"]["word_list"]["word"]
+    if response_result.instance_of?(Array)
+      result_from_api = response_result
+    else
+      result_from_api = [response_result]
+    end
 
     # 名詞の配列リストを作成する
     results = []
