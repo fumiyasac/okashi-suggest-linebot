@@ -1,12 +1,11 @@
-# LINEBOT処理用のモジュール
-# 参考:
-# http://qiita.com/Arahabica/items/98e3d0d5b65269386dc4
-
 require "faraday"
 require "faraday_middleware"
 require "json"
 require "pp"
 
+# LINEBOT処理用のモジュール
+# 参考:
+# http://qiita.com/Arahabica/items/98e3d0d5b65269386dc4
 class LineClient
 
   # LINEBOT用の定数値
@@ -28,7 +27,7 @@ class LineClient
     CONTACT  = 10
   end
 
-  # ユーザータイプ定数
+  # ユーザータイプ定数（今のところは1しかない）
   module ToType
     USER = 1
   end
@@ -46,9 +45,9 @@ class LineClient
     post('/v1/events', {
         to: line_ids,
         content: {
-            contentType: ContentType::TEXT,
-            toType: ToType::USER,
-            text: message
+          contentType: ContentType::TEXT,
+          toType: ToType::USER,
+          text: message
         },
         toChannel: TO_CHANNEL,
         eventType: EVENT_TYPE
@@ -69,10 +68,10 @@ class LineClient
     res = client.post do |request|
       request.url path
       request.headers = {
-          'Content-type' => 'application/json; charset=UTF-8',
-          'X-Line-ChannelID' => @channel_id,
-          'X-Line-ChannelSecret' => @channel_secret,
-          'X-Line-Trusted-User-With-ACL' => @channel_mid
+        'Content-type' => 'application/json; charset=UTF-8',
+        'X-Line-ChannelID' => @channel_id,
+        'X-Line-ChannelSecret' => @channel_secret,
+        'X-Line-Trusted-User-With-ACL' => @channel_mid
       }
       request.body = data
     end

@@ -22,6 +22,8 @@ module AnalizeApi
       uniq_filter: '9|10'
     })
     response_result = response_from_api["ResultSet"]["ma_result"]["word_list"]["word"]
+
+    # 1語の場合は配列に格納されていないので配列に入れる
     if response_result.instance_of?(Array)
       result_from_api = response_result
     else

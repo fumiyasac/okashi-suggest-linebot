@@ -28,10 +28,13 @@ class WebHookController < ApplicationController
     from_mid = result['content']['from']
     text_message = result['content']['text']
 
-    # 引数：text_messageの内容を解析して返却する
+    # text_messageの内容をYahoo!形態素解析APIを利用して返却する
     target_text = analize_text(text_message)
     category_check = category_result_from_api(target_text)
 
+    # 1) カテゴリーの文言に合致した場合はカテゴリーに合致するものを1件
+    # 2) カテゴリーの文言に合致しない場合はキーワード検索で合致するものを1件
+    # 注意：お菓子データの返却はランダムに1件のみとしている
     type = decide_category_from_api(category_check)
     if type.present?
       category_flag = true
